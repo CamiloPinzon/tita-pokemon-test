@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { IPokemonState } from "../../types/types";
+import { IPokemonState, IPokemonDetail } from "../../types/types";
 import {
 	fetchPokemonsAPI,
 	fetchPokemonCountAPI,
+	fetchPokemonDetailsAPI,
 } from "../../services/pokemonService";
 import { RootState } from "../../store/store";
 
@@ -36,7 +37,23 @@ export const fetchPokemons = createAsyncThunk(
 
 		const data = await fetchPokemonsAPI(limit, offset);
 
-		return { page, pokemons: data.results };
+		const detailedPokemons: IPokemonDetail[] = await Promise.all(
+			data.results.map(async (pokemon: { name: string; url: string }) => {
+				const details = await fetchPokemonDetailsAPI(pokemon.url); // Fetch detailed info
+				return {
+					id: details.id, // Pokedex number
+					name: details.name,
+					image: details.sprites.front_default, // Image of Pokémon
+					types: details.types.map(
+						(t: { type: { name: string } }) => t.type.name
+					), // Types array
+					height: details.height,
+					weight: details.weight,
+				};
+			})
+		);
+
+		return { page, pokemons: detailedPokemons };
 	}
 );
 

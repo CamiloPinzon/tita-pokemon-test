@@ -14,3 +14,9 @@ export const fetchPokemonCountAPI = async (): Promise<{ count: number }> => {
 	const data = await response.json();
 	return { count: data.count };
 };
+
+export const fetchPokemonDetailsAPI = async (url: string) => {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+};

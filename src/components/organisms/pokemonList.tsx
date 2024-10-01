@@ -30,7 +30,16 @@ const PokemonList = () => {
 				<>
 					<ul>
 						{pokemons[currentPage]?.map((pokemon) => (
-							<li key={pokemon.name}>{pokemon.name}</li>
+							<li key={pokemon.id} className="pokemon-item">
+								<img
+									src={pokemon.image}
+									alt={pokemon.name}
+									className="pokemon-thumbnail"
+								/>
+								<span className="pokemon-info">
+									<strong>{pokemon.name}</strong> - #{pokemon.id}
+								</span>
+							</li>
 						))}
 					</ul>
 

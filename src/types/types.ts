@@ -11,15 +11,26 @@ export interface IText {
 }
 
 export interface IPokemon {
+	id: number;
 	name: string;
 	url: string;
+	image: string;
+}
+
+export interface IPokemonDetail {
+	id: number;
+	name: string;
+	image: string;
+	types: string[];
+	height: number;
+	weight: number;
 }
 
 export interface IPokemonState {
-	pokemons: Record<number, IPokemon[]>;
+	pokemons: { [key: number]: IPokemonDetail[] };
 	currentPage: number;
 	totalPages: number;
 	status: "idle" | "loading" | "succeeded" | "failed";
-    error: string | null;
-    totalCount: number;
+	error: string | null;
+	totalCount: number;
 }
