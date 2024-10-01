@@ -12,9 +12,9 @@ const App: React.FC = () => {
 	}, [dispatch]);
 
 	return (
-		<>
-			<h1>Pokémon List</h1>
-
+    <>
+      <h1>Pokédex</h1>
+      <h2>search bar component</h2>
 			<PokemonList />
 		</>
 	);

@@ -6,6 +6,8 @@ import {
 	setCurrentPage,
 } from "../../features/pokemon/pokemonSlice";
 
+import "./pokemonList.scss";
+
 const PokemonList = () => {
 	const dispatch = useDispatch<AppDispatch>();
 	const { pokemons, currentPage, totalPages, status } = useSelector(
@@ -21,7 +23,7 @@ const PokemonList = () => {
 	};
 
 	return (
-		<div>
+		<div className="pokemon-list">
 			{status === "loading" && <p>Loading...</p>}
 			{status === "failed" && <p>Failed to load Pokémon.</p>}
 			{status === "succeeded" && (
