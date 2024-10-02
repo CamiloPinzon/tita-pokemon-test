@@ -14,6 +14,16 @@ export interface IText {
 	color: string;
 }
 
+export interface IInput {
+	placeholder: string;
+	value: string;
+	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export interface ISearchBarProps {
+	onSearch: (searchTerm: string) => void;
+}
+
 interface IPokemonType {
 	name: string;
 }
