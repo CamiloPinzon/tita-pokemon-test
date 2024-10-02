@@ -1,36 +1,80 @@
-export interface IImage {
-	url: string;
-	altText: string;
-	type: "thumbnail" | "fullsize";
-}
+type textTypes =
+	| "headline"
+	| "subtitle1"
+	| "subtitle2"
+	| "subtitle3"
+	| "body1"
+	| "body2"
+	| "body3"
+	| "regular";
 
 export interface IText {
 	text: string;
-	type: "sm" | "md" | "lg";
-	color?: string;
+	type: textTypes;
+	color: string;
+}
+
+interface IPokemonType {
+	name: string;
+}
+
+interface IPokemonMove {
+	name: string;
+}
+
+interface IPokemonStat {
+	base_stat: number;
+	pokemon_v2_stat: {
+		name: string;
+	};
 }
 
 export interface IPokemon {
 	id: number;
 	name: string;
-	url: string;
-	image: string;
+	types: IPokemonType[];
+	weight: number;
+	height: number;
+	moves: {
+		move: IPokemonMove;
+		stats: IPokemonStat[];
+	}[];
 }
 
-export interface IPokemonDetail {
-	id: number;
-	name: string;
-	image: string;
-	types: string[];
-	height: number;
-	weight: number;
+export interface IGraphQLResponse {
+	data: {
+		pokemon_v2_pokemon: {
+			id: number;
+			name: string;
+			pokemon_v2_pokemontypes: {
+				pokemon_v2_type: IPokemonType;
+			}[];
+			weight: number;
+			height: number;
+			pokemon_v2_pokemonmoves: {
+				pokemon_v2_move: IPokemonMove;
+				pokemon_v2_pokemon: {
+					pokemon_v2_pokemonstats: IPokemonStat[];
+				};
+			}[];
+		}[];
+	};
 }
 
 export interface IPokemonState {
-	pokemons: { [key: number]: IPokemonDetail[] };
-	currentPage: number;
-	totalPages: number;
-	status: "idle" | "loading" | "succeeded" | "failed";
+	loading: boolean;
+	pokemons: IPokemon[];
 	error: string | null;
-	totalCount: number;
+}
+
+export interface IPokemonDetails {
+	imageUrl: string;
+	description: string;
+}
+
+export interface IFlavorTextEntry {
+	flavor_text: string;
+	language: {
+		name: string;
+	};
 }

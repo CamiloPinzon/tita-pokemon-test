@@ -1,0 +1,7 @@
+@import "./styles/global.scss";
+
+body {
+    background-color: $background;
+    display: flex;
+    justify-content: center;
+}

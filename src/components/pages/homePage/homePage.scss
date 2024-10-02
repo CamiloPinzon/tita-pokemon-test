@@ -1,0 +1,14 @@
+@import '../../../styles/global.scss';
+
+.home-page {
+    background-color: $primary;
+    padding-bottom: 2px;
+    margin-block: 20px;
+}
+
+.header {
+    display: flex;
+    gap: 16px;
+    padding: 12px;
+    align-items: center;
+}

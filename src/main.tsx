@@ -4,7 +4,8 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import App from "./App";
 
-import "./styles/global.scss";
+import "./styles/reset.scss";
+import "./main.scss";
 
 createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>

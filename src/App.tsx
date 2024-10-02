@@ -1,22 +1,18 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "./store/store";
-import { fetchTotalPokemonsCount } from "./features/pokemon/pokemonSlice";
-import PokemonList from "./components/organisms/pokemonList";
+import { useEffect } from "react";
+import { fetchAllPokemons } from "./api/fetchPokemon";
+import HomePage from "./components/pages/homePage/homePage";
 
-const App: React.FC = () => {
-	const dispatch: AppDispatch = useDispatch();
+import "./app.scss";
 
+const App = () => {
 	useEffect(() => {
-		dispatch(fetchTotalPokemonsCount());
-	}, [dispatch]);
+		fetchAllPokemons();
+	}, []);
 
 	return (
-    <>
-      <h1>Pokédex</h1>
-      <h2>search bar component</h2>
-			<PokemonList />
-		</>
+		<div className="app-container">
+			<HomePage />
+		</div>
 	);
 };
 

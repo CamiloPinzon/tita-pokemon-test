@@ -1,0 +1,95 @@
+@import "../../../styles/global.scss";
+
+.bug {
+    color: $bug;
+}
+
+.dark {
+    color: $dark;
+}
+
+.dragon {
+    color: $dragon;
+}
+
+.electric {
+    color: $electric;
+}
+
+.fairy {
+    color: $fairy;
+}
+
+.fighting {
+    color: $fighting;
+}
+
+.fire {
+    color: $fire;
+}
+
+.flying {
+    color: $flying;
+}
+
+.ghost {
+    color: $ghost;
+}
+
+.normal {
+    color: $normal;
+}
+
+.grass {
+    color: $grass;
+}
+
+.ground {
+    color: $ground;
+}
+
+.ice {
+    color: $ice;
+}
+
+.poison {
+    color: $poison;
+}
+
+.psychic {
+    color: $psychic;
+}
+
+.rock {
+    color: $rock;
+}
+
+.water {
+    color: $water;
+}
+
+.white {
+    color: white;
+}
+
+.medium {
+    color: $medium;
+}
+
+.text-headline {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.text-regular {
+    font-weight: normal;
+    font-size: 8px;
+    line-height: 12px;
+}
+
+.body3 {
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 16px;
+}
