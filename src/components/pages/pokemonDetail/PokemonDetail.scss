@@ -1,0 +1,75 @@
+@import '../../../styles/global.scss';
+
+$colors: (
+    bug: $bug,
+    dark: $dark,
+    dragon: $dragon,
+    electric: $electric,
+    fairy: $fairy,
+    fighting: $fighting,
+    fire: $fire,
+    flying: $flying,
+    ghost: $ghost,
+    normal: $normal,
+    grass: $grass,
+    ground: $ground,
+    ice: $ice,
+    poison: $poison,
+    psychic: $psychic,
+    rock: $rock,
+    water: $water,
+);
+
+@each $name, $color in $colors {
+    .bg-#{$name} {
+        background-color: $color;
+    }
+}
+
+.pokemon-detail {
+    position: relative;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px;
+
+        &:nth-child(3),
+        &:nth-child(1) {
+            flex-shrink: 0;
+        }
+    }
+
+    &__title {
+        width: 100%;
+        padding-inline: 8px;
+        text-transform: capitalize;
+    }
+
+    &__image-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-inline: 24px;
+    }
+
+    &__back-page-button {
+        cursor: pointer;
+    }
+
+    &__back-button {
+        transform: rotate(180deg);
+        cursor: pointer;
+    }
+
+    &__next-button {
+        cursor: pointer;
+    }
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: none;
+}

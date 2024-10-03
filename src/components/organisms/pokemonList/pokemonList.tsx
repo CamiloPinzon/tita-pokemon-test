@@ -17,14 +17,14 @@ const PokemonList = ({ searchTerm, sortBy }: IPokemonListProps) => {
 	);
 
 	useEffect(() => {
-		dispatch(fetchPokemonsThunk()); // No more type issues
+		dispatch(fetchPokemonsThunk());
 	}, [dispatch]);
 
 	if (loading) return <div>Loading...</div>;
 	if (error) return <div>Error: {error}</div>;
 
 	const isNumeric = (term: string) => {
-		return /^\d+$/.test(term); // Check if term consists of digits only
+		return /^\d+$/.test(term);
 	};
 
 	const removeLeadingZeros = (term: string) => {

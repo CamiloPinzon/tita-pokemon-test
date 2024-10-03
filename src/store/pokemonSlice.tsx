@@ -60,6 +60,17 @@ export const fetchPokemonImage = async (id: number): Promise<string> => {
 	return pokemonData.sprites.front_default;
 };
 
+export const fetchPokemonLargeImage = async (id: number): Promise<string> => {
+	const pokemonResponse = await fetch(
+		`https://pokeapi.co/api/v2/pokemon/${id}`
+	);
+	const pokemonData = await pokemonResponse.json();
+	return (
+		pokemonData.sprites.other["official-artwork"]["front_default"] ||
+		pokemonData.sprites.front_default
+	);
+};
+
 export const fetchPokemonDescription = async (id: number): Promise<string> => {
 	try {
 		const pokemonResponse = await fetch(

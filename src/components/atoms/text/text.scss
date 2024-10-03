@@ -1,79 +1,34 @@
 @import "../../../styles/global.scss";
 
-.bug {
-    color: $bug;
-}
+$colors: (
+    bug: $bug,
+    dark: $dark,
+    dragon: $dragon,
+    electric: $electric,
+    fairy: $fairy,
+    fighting: $fighting,
+    fire: $fire,
+    flying: $flying,
+    ghost: $ghost,
+    normal: $normal,
+    grass: $grass,
+    ground: $ground,
+    ice: $ice,
+    poison: $poison,
+    psychic: $psychic,
+    rock: $rock,
+    water: $water,
+    white: $white,
+    darkcolor: $darkcolor,
+    medium: $medium,
+    light: $light,
+    background: $background,
+);
 
-.dark {
-    color: $dark;
-}
-
-.dragon {
-    color: $dragon;
-}
-
-.electric {
-    color: $electric;
-}
-
-.fairy {
-    color: $fairy;
-}
-
-.fighting {
-    color: $fighting;
-}
-
-.fire {
-    color: $fire;
-}
-
-.flying {
-    color: $flying;
-}
-
-.ghost {
-    color: $ghost;
-}
-
-.normal {
-    color: $normal;
-}
-
-.grass {
-    color: $grass;
-}
-
-.ground {
-    color: $ground;
-}
-
-.ice {
-    color: $ice;
-}
-
-.poison {
-    color: $poison;
-}
-
-.psychic {
-    color: $psychic;
-}
-
-.rock {
-    color: $rock;
-}
-
-.water {
-    color: $water;
-}
-
-.white {
-    color: white;
-}
-
-.medium {
-    color: $medium;
+@each $name, $color in $colors {
+    .#{$name} {
+        color: $color;
+    }
 }
 
 .text-headline {

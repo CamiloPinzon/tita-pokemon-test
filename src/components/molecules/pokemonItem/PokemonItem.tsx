@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { IPokemon } from "../../../types/types";
 import { fetchPokemonImage } from "../../../store/pokemonSlice";
 import Text from "../../atoms/text/text";
@@ -10,7 +11,8 @@ interface PokemonItemProps {
 }
 
 const PokemonItem = ({ pokemon }: PokemonItemProps) => {
-	const [imageUrl, setImageUrl] = useState<string>("");
+	const [imageUrl, setImageUrl] = useState("");
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const getImageAndDescription = async () => {
@@ -27,8 +29,12 @@ const PokemonItem = ({ pokemon }: PokemonItemProps) => {
 
 	const formattedId = String(pokemon.id).padStart(3, "0");
 
+	const handleClick = () => {
+		navigate(`/pokemon/${pokemon.id}`);
+	}
+
 	return (
-		<div className="pokemon-item">
+		<div className="pokemon-item" onClick={handleClick}>
 			<div className="pokemon-item__number">
 				<Text text={`#${formattedId}`} type="regular" color="medium" />
 			</div>
