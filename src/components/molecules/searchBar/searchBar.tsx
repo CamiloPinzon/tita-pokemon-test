@@ -11,7 +11,7 @@ const SearchBar = ({ onSearch }: ISearchBarProps) => {
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const input = e.target.value.trim();
 
-		const isValid = input.length >= 3 && /^[a-zA-Z]+$/.test(input);
+		const isValid = input.length >= 3 && /^[a-zA-Z0-9]+$/.test(input);
 
 		setSearchTerm(input);
 

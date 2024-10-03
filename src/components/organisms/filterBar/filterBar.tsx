@@ -5,7 +5,6 @@ import "./filterBar.scss";
 
 const FilterBar = ({ onSearch }: IFilterBarProps) => {
 	const handleSearch = (searchTerm: string) => {
-		// Call the onSearch prop with the new search term
 		onSearch(searchTerm);
 	}
 
