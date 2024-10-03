@@ -1,7 +1,7 @@
 import { IPokemon, IGraphQLResponse } from "../types/types";
 
 export const fetchAllPokemons = async (): Promise<IPokemon[]> => {
-	const items = 10;
+	const items = 20;
 	const query = `
     query MyQuery {
       pokemon_v2_pokemon ${items > 0 && `(limit: ${items})`} {

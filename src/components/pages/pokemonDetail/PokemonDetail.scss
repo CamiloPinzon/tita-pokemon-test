@@ -68,6 +68,13 @@ $colors: (
     }
 }
 
+.pills-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
 .disabled {
     pointer-events: none;
     opacity: 0.5;

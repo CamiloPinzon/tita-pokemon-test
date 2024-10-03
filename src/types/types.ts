@@ -111,3 +111,8 @@ export interface ISortProps {
 export interface ISortButtonProps {
 	onClick: () => void;
 }
+
+export interface ITypePillProps {
+	type: string;
+	children: React.ReactNode;
+}

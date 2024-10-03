@@ -7,6 +7,8 @@ import Text from "../../atoms/text/text";
 import ArrowBack from "../../../assets/arrow_back.svg";
 import Chevron from "../../../assets/chevron.svg";
 import { fetchPokemonLargeImage } from "../../../store/pokemonSlice";
+import WhiteCardContainer from "../../atoms/whiteCardContainer/whiteCardContainer";
+import TypePill from "../../atoms/typePill/typeFill";
 
 import "./PokemonDetail.scss";
 
@@ -94,6 +96,17 @@ const PokemonDetail = () => {
 				>
 					<img src={Chevron} alt="Chevron" />
 				</div>
+			</section>
+			<section className="pokemon-details-container">
+				<WhiteCardContainer>
+					<div className="pills-container">
+						{pokemon.types.map((type, idx) => (
+							<TypePill key={idx} type={type.name}>
+								{type.name}
+							</TypePill>
+						))}
+					</div>
+				</WhiteCardContainer>
 			</section>
 		</div>
 	);
