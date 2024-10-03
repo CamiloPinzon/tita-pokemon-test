@@ -1,10 +1,14 @@
 import SearchBar from "../../molecules/searchBar/searchBar";
+import { IFilterBarProps } from "../../../types/types";
 
-const FilterBar = () => {
+import "./filterBar.scss";
+
+const FilterBar = ({ onSearch }: IFilterBarProps) => {
 	const handleSearch = (searchTerm: string) => {
-		console.log("Searching for:", searchTerm);
-		// Perform your search logic here (e.g., dispatching Redux action, etc.)
-	};
+		// Call the onSearch prop with the new search term
+		onSearch(searchTerm);
+	}
+
 	return (
 		<div className="filter-bar">
 			<SearchBar onSearch={handleSearch} />

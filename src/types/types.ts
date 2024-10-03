@@ -74,6 +74,7 @@ export interface IGraphQLResponse {
 export interface IPokemonState {
 	loading: boolean;
 	pokemons: IPokemon[];
+	filteredPokemons: IPokemon[];
 	error: string | null;
 }
 
@@ -87,4 +88,26 @@ export interface IFlavorTextEntry {
 	language: {
 		name: string;
 	};
+}
+
+export interface IPokemonListProps {
+	searchTerm: string;
+	sortBy: string;
+}
+
+export interface IFilterBarProps {
+	onSearch: (searchTerm: string) => void;
+}
+
+export interface ISortCardProps {
+	onSortChange: (sortCriterion: string) => void;
+	selectedSort: string;
+}
+
+export interface ISortProps {
+	onSortChange: (sortCriterion: string) => void;
+}
+
+export interface ISortButtonProps {
+	onClick: () => void;
 }

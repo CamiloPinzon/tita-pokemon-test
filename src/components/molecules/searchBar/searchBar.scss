@@ -1,0 +1,12 @@
+.search-bar {
+    grid-column: span 10 / span 10;
+    position: relative;
+
+    &__search-logo {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 6px;
+        left: 12px;
+    }
+}

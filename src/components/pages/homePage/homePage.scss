@@ -4,11 +4,18 @@
     background-color: $primary;
     padding-bottom: 2px;
     margin-block: 20px;
-}
 
-.header {
-    display: flex;
-    gap: 16px;
-    padding: 12px;
-    align-items: center;
+    &__header {
+        display: flex;
+        gap: 16px;
+        padding: 12px;
+        align-items: center;
+    }
+
+    &__filters {
+        display: flex;
+        flex: 1;
+        gap: 20px;
+        padding: 0 12px;
+    }
 }

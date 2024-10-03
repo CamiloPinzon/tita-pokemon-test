@@ -1,0 +1,57 @@
+@import "../../../styles/global.scss";
+
+.sort-card {
+    position: absolute;
+    right: 0px;
+    width: 113px;
+    height: 132px;
+    background-color: $primary;
+    border: none;
+    border-radius: 12px;
+    z-index: 9999;
+
+    &__title {
+        margin-right: 24px;
+        margin-block: 16px;
+        text-align: center;
+    }
+}
+
+.radio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 5px;
+
+    label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: -4px;
+        font-size: 10px;
+        line-height: 6px;
+
+        input[type="radio"] {
+            appearance: none;
+            border: 2px solid $primary;
+            border-radius: 50%;
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            margin-right: 8px;
+        }
+
+        input[type="radio"]:checked {
+            border: 1px solid $primary;
+            padding: 2px;
+            background-color: $primary;
+        }
+
+        span {
+            margin-top: 4px;
+        }
+    }
+}

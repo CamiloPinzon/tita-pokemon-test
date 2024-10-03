@@ -4,7 +4,7 @@ export const fetchAllPokemons = async (): Promise<IPokemon[]> => {
 	const items = 10;
 	const query = `
     query MyQuery {
-      pokemon_v2_pokemon (limit: ${items}) {
+      pokemon_v2_pokemon ${items > 0 && `(limit: ${items})`} {
         id
         name
         pokemon_v2_pokemontypes {

@@ -1,0 +1,10 @@
+.sort-container {
+    position: relative;
+
+    &__button {
+        width: 32px;
+        height: 32px;
+        grid-column: span 2 / span 2;
+        margin: 0 auto;
+    }
+}

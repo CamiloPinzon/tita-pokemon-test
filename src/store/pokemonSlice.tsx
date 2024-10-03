@@ -5,6 +5,7 @@ import { fetchAllPokemons } from "../api/fetchPokemon";
 const initialState: IPokemonState = {
 	loading: false,
 	pokemons: [],
+	filteredPokemons: [],
 	error: null,
 };
 
@@ -19,7 +20,21 @@ export const fetchPokemonsThunk = createAsyncThunk(
 export const pokemonSlice = createSlice({
 	name: "pokemon",
 	initialState,
-	reducers: {},
+	reducers: {
+		filterPokemons: (state, action) => {
+			const searchTerm = action.payload.toLowerCase();
+			if (searchTerm === "") {
+				state.filteredPokemons = state.pokemons;
+			} else {
+				// Filter based on name or ID
+				state.filteredPokemons = state.pokemons.filter(
+					(pokemon) =>
+						pokemon.name.toLowerCase().includes(searchTerm) ||
+						pokemon.id.toString().includes(searchTerm)
+				);
+			}
+		},
+	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(fetchPokemonsThunk.pending, (state) => {
@@ -75,5 +90,7 @@ export const fetchPokemonDescription = async (id: number): Promise<string> => {
 		return "No description available";
 	}
 };
+
+export const { filterPokemons } = pokemonSlice.actions;
 
 export default pokemonSlice.reducer;

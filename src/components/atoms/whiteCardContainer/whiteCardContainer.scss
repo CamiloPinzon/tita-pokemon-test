@@ -1,0 +1,12 @@
+.white-card-container {
+    margin-top: 24px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0px 1px 3px 1px #00000040 inset;
+    padding: 24px 12px 8px 12px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 8px;
+    margin: 5px;
+}
