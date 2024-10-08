@@ -31,12 +31,12 @@ const PokemonItem = ({ pokemon }: PokemonItemProps) => {
 
 	const handleClick = () => {
 		navigate(`/pokemon/${pokemon.id}`);
-	}
+	};
 
 	return (
 		<div className="pokemon-item" onClick={handleClick}>
 			<div className="pokemon-item__number">
-				<Text text={`#${formattedId}`} type="regular" color="medium" />
+				<Text text={`#${formattedId}`} type="caption" color="medium" />
 			</div>
 			<img
 				src={imageUrl}
