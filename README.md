@@ -1,50 +1,53 @@
-# React + TypeScript + Vite
+# Pokémon App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
+A web application that allows users to search, view, and navigate Pokémon details. The app utilizes the PokéAPI to fetch Pokémon data and display it in an interactive format.
 
-Currently, two official plugins are available:
+## Features
+- **Search Functionality**: Search for Pokémon by name or number.
+- **Dynamic Routing**: Navigate to individual Pokémon detail pages.
+- **Statistics Visualization**: Display Pokémon stats in a percentage bar format.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- **React**: Frontend framework for building the user interface.
+- **TypeScript**: Typed superset of JavaScript for safer and more reliable code.
+- **Redux**: State management library for managing application state.
+- **SCSS**: Sassy CSS for enhanced styling capabilities.
+- **React Router**: For navigation and routing within the application.
 
-## Expanding the ESLint configuration
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/CamiloPinzon/tita-pokemon-test.git
+   cd pokemon-app
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-- Configure the top-level `parserOptions` property like this:
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+4. Open your browser and go to the generated url usually `http://localhost:5174/`.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Usage
+- Use the search bar to find Pokémon by name or ID.
+- Click on a Pokémon to view its details and stats.
+- Navigate between Pokémon details using the Next and Previous buttons.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## API Reference
+This project utilizes the [PokéAPI](https://pokeapi.co/) to fetch Pokémon data.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Contributing
+Contributions are welcome! Please feel free to submit a pull request or open an issue.
+
+## License
+This project is licensed under the MIT License.
+
+## Acknowledgements
+- Thanks to [PokéAPI](https://pokeapi.co/) for providing the Pokémon data.
+- Inspired by the Pokémon universe and community.
