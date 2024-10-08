@@ -1,6 +1,8 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { IPokemon } from "../../../types/types";
 import Text from "../../atoms/text/text";
+import PlaceHolderImage from "../../../assets/placeholder.svg";
 
 import "./pokemonItem.scss";
 
@@ -9,9 +11,14 @@ interface PokemonItemProps {
 }
 
 const PokemonItem = ({ pokemon }: PokemonItemProps) => {
+	const [imageUrl, setImageUrl] = useState(PlaceHolderImage);
 	const navigate = useNavigate();
 
 	const formattedId = String(pokemon.id).padStart(3, "0");
+
+	useEffect(() => {
+		setImageUrl(pokemon.largeImageUrl);
+	}, [pokemon]);
 
 	const handleClick = () => {
 		navigate(`/pokemon/${pokemon.id}`);
@@ -23,7 +30,7 @@ const PokemonItem = ({ pokemon }: PokemonItemProps) => {
 				<Text text={`#${formattedId}`} type="caption" color="medium" />
 			</div>
 			<img
-				src={pokemon.imageUrl}
+				src={imageUrl}
 				alt={pokemon.name}
 				className="pokemon-item__image"
 				width="72"

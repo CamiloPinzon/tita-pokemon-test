@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
@@ -10,10 +11,12 @@ import TypePill from "../../atoms/typePill/typeFill";
 import WeightIcon from "../../../assets/weight.svg";
 import HeightIcon from "../../../assets/height.svg";
 import Pokeball from "../../../assets/pokeball.svg";
+import PlaceholderImage from "../../../assets/placeholder.svg";
 
 import "./PokemonDetail.scss";
 
 const PokemonDetail = () => {
+	const [imageUrl, setImageUrl] = useState(PlaceholderImage);
 	const { id } = useParams();
 	const navigate = useNavigate();
 	const { pokemons } = useSelector((state: RootState) => state.pokemon);
@@ -24,9 +27,11 @@ const PokemonDetail = () => {
 			: undefined;
 
 	const formattedId = String(pokemonId).padStart(3, "0");
-
-	console.log(pokemon);
 	const color = pokemon!.types[0].name;
+
+	useEffect(() => {
+		setImageUrl(pokemon!.largeImageUrl);
+	}, [pokemon]);
 
 	const handleNext = () => {
 		const nextPokemon = pokemons.find(
@@ -75,12 +80,7 @@ const PokemonDetail = () => {
 				>
 					<img src={Chevron} alt="Chevron" />
 				</div>
-				<img
-					src={pokemon.largeImageUrl}
-					alt={pokemon.name}
-					width="200px"
-					height="200px"
-				/>
+				<img src={imageUrl} alt={pokemon.name} width="200px" height="200px" />
 				<div
 					onClick={handleNext}
 					className={`pokemon-detail__next-button ${
