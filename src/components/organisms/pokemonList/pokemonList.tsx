@@ -6,6 +6,7 @@ import { RootState, AppDispatch } from "../../../store/store";
 import PokemonItem from "../../molecules/pokemonItem/PokemonItem";
 import WhiteCardContainer from "../../atoms/whiteCardContainer/whiteCardContainer";
 import { IPokemonListProps, IPokemon } from "../../../types/types";
+import Loader from "../../atoms/loader/loader";
 
 import "./pokemonList.scss";
 
@@ -22,7 +23,12 @@ const PokemonList = ({ searchTerm, sortBy }: IPokemonListProps) => {
 		}
 	}, [dispatch, pokemons.length]);
 
-	if (loading) return <div>Loading...</div>;
+	if (loading)
+		return (
+			<div className="loader-container">
+				<Loader />
+			</div>
+		);
 	if (error) return <div>Error: {error}</div>;
 
 	const isNumeric = (term: string) => {
