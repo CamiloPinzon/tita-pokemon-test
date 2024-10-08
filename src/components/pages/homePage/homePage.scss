@@ -2,7 +2,9 @@
 
 .home-page {
     background-color: $primary;
-    padding-bottom: 2px;
+    background-color: #DC0A2D;
+    padding-inline: 4px;
+    padding-bottom: 4px;
 
     &__header {
         display: flex;
@@ -16,5 +18,9 @@
         flex: 1;
         gap: 20px;
         padding: 0 12px;
+    }
+
+    &__list {
+        margin-top: 24px;
     }
 }

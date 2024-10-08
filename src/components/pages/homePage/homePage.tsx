@@ -29,7 +29,7 @@ const HomePage = () => {
 				<FilterBar onSearch={handleSearch} />
 				<Sort onSortChange={handleSortChange} />{" "}
 			</section>
-			<section>
+			<section className="home-page__list">
 				<PokemonList searchTerm={searchTerm} sortBy={sortBy} />
 			</section>
 		</div>

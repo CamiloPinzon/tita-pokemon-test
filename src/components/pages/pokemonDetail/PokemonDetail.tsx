@@ -7,13 +7,18 @@ import Text from "../../atoms/text/text";
 import ArrowBack from "../../../assets/arrow_back.svg";
 import Chevron from "../../../assets/chevron.svg";
 import { fetchPokemonLargeImage } from "../../../store/pokemonSlice";
+import { fetchPokemonDescription } from "../../../store/pokemonSlice";
 import WhiteCardContainer from "../../atoms/whiteCardContainer/whiteCardContainer";
 import TypePill from "../../atoms/typePill/typeFill";
+import WeightIcon from "../../../assets/weight.svg";
+import HeightIcon from "../../../assets/height.svg";
+import Pokeball from "../../../assets/pokeball.svg";
 
 import "./PokemonDetail.scss";
 
 const PokemonDetail = () => {
 	const [imageUrl, setImageUrl] = useState("");
+	const [description, setDescription] = useState("");
 	const { id } = useParams();
 	const navigate = useNavigate();
 	const { pokemons } = useSelector((state: RootState) => state.pokemon);
@@ -43,6 +48,21 @@ const PokemonDetail = () => {
 		getImage();
 	}, [pokemonId]);
 
+	useEffect(() => {
+		const getDescription = async () => {
+			if (pokemonId !== undefined) {
+				try {
+					const description = await fetchPokemonDescription(pokemonId);
+					setDescription(description);
+				} catch (error) {
+					console.error("Error fetching description:", error);
+				}
+			}
+		};
+
+		getDescription();
+	}, [pokemonId]);
+
 	const handleNext = () => {
 		const nextPokemon = pokemons.find(
 			(p: IPokemon) => p.id === (pokemonId ? pokemonId + 1 : undefined)
@@ -69,6 +89,9 @@ const PokemonDetail = () => {
 
 	return (
 		<div className={`pokemon-detail bg-${color}`}>
+			<div className="pokeball-detail">
+				<img src={Pokeball} alt="Pokeball" />
+			</div>
 			<header className="pokemon-detail__header">
 				<div className="pokemon-detail__back-page-button" onClick={handleBack}>
 					<img src={ArrowBack} alt="Arrow Back" />
@@ -105,6 +128,107 @@ const PokemonDetail = () => {
 								{type.name}
 							</TypePill>
 						))}
+					</div>
+					<div className="sub-title">
+						<Text text="About" type="subtitle1" color={`${color}`} />
+					</div>
+					<div className="properties-container">
+						<div className="property-container">
+							<div className="property-container__property">
+								<div className="property__icon">
+									<img src={WeightIcon} alt="Weight Icon" />
+								</div>
+								<div className="property__value">
+									<Text
+										text={`${pokemon.weight}kg`}
+										type="body3"
+										color="darkcolor"
+									/>
+								</div>
+							</div>
+							<Text text="Weight" type="caption" color="medium" />
+						</div>
+						<div className="property-container">
+							<div className="property-container__property">
+								<div className="property__icon">
+									<img src={HeightIcon} alt="Height Icon" />
+								</div>
+								<div className="property__value">
+									<Text
+										text={`${pokemon.height}m`}
+										type="body3"
+										color="darkcolor"
+									/>
+								</div>
+							</div>
+							<Text text="Height" type="caption" color="medium" />
+						</div>
+						<div className="property-container">
+							<div className="moves">
+								{pokemon.moves.map((move, idx) => {
+									return (
+										<Text
+											key={idx}
+											text={`${move.move.name}`}
+											type="body3"
+											color="darkcolor"
+										/>
+									);
+								})}
+							</div>
+							<Text text="Moves" type="body3" color="medium" />
+						</div>
+					</div>
+					<div className="description-container">
+						<Text text={description} type="body3" color="darkcolor" />
+					</div>
+					<div className="sub-title">
+						<Text text="Base Stats" type="subtitle1" color={`${color}`} />
+					</div>
+					<div className="stats-container">
+						{pokemon.moves[0].stats.map((stat, idx) => {
+							let statName = "";
+							switch (stat.pokemon_v2_stat.name) {
+								case "attack":
+									statName = "ATK";
+									break;
+								case "defense":
+									statName = "DEF";
+									break;
+								case "special-attack":
+									statName = "SATK";
+									break;
+								case "special-defense":
+									statName = "SDEF";
+									break;
+								case "speed":
+									statName = "SPD";
+									break;
+								default:
+									statName = stat.pokemon_v2_stat.name.toUpperCase();
+									break;
+							}
+							return (
+								<div className="stat-container" key={idx}>
+									<div className="stat-name">
+										<Text text={statName} type="subtitle3" color={`${color}`} />
+									</div>
+									<div>
+										<Text
+											text={`${stat.base_stat}`}
+											type="body3"
+											color="darkcolor"
+										/>
+									</div>
+									<div className={`bglg-${color} stat-bar`}>
+										<div
+											className={`stat-bar__fill bg-${color}`}
+											style={{ width: `${(stat.base_stat * 100) / 255}%` }}
+										></div>
+									</div>
+								</div>
+							);
+						})}
 					</div>
 				</WhiteCardContainer>
 			</section>

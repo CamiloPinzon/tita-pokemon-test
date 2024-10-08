@@ -37,6 +37,12 @@ $colors: (
     line-height: 32px;
 }
 
+.text-subtitle1 {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+}
+
 .text-subtitle2 {
     font-weight: bold;
     font-size: 12px;
@@ -59,4 +65,10 @@ $colors: (
     font-weight: normal;
     font-size: 10px;
     line-height: 16px;
+}
+
+.text-caption {
+    font-weight: normal;
+    font-size: 8px;
+    line-height: 12px;
 }

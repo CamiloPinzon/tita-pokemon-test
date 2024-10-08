@@ -12,3 +12,13 @@
     gap: 8px;
     margin: 5px;
 }
+
+.list-container {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 8px;
+    margin: 5px;
+    padding: 24px 12px;
+}

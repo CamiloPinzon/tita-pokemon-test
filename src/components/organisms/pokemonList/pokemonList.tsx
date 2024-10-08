@@ -53,9 +53,11 @@ const PokemonList = ({ searchTerm, sortBy }: IPokemonListProps) => {
 
 	return (
 		<WhiteCardContainer>
-			{sortedPokemons.map((pokemon) => (
-				<PokemonItem key={pokemon.id} pokemon={pokemon} />
-			))}
+			<div className="list-container">
+				{sortedPokemons.map((pokemon) => (
+					<PokemonItem key={pokemon.id} pokemon={pokemon} />
+				))}
+			</div>
 		</WhiteCardContainer>
 	);
 };

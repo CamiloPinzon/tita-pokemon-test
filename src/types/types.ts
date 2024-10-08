@@ -6,7 +6,7 @@ type textTypes =
 	| "body1"
 	| "body2"
 	| "body3"
-	| "regular";
+	| "caption";
 
 export interface IText {
 	text: string;
@@ -46,6 +46,7 @@ export interface IPokemon {
 	weight: number;
 	height: number;
 	moves: {
+		[x: string]: unknown;
 		move: IPokemonMove;
 		stats: IPokemonStat[];
 	}[];

@@ -26,14 +26,32 @@ $colors: (
     }
 }
 
+@each $name, $color in $colors {
+    .bglg-#{$name} {
+        background-color: rgba($color, 0.3);
+    }
+}
+
 .pokemon-detail {
-    position: relative;
+    .pokeball-detail {
+        position: relative;
+        pointer-events: none;
+
+        img {
+            position: absolute;
+            width: 200px;
+            opacity: .1;
+            right: 4px;
+            top: 4px;
+        }
+    }
 
     &__header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 24px;
+        z-index: 10;
 
         &:nth-child(3),
         &:nth-child(1) {
@@ -49,9 +67,11 @@ $colors: (
 
     &__image-container {
         display: flex;
+        position: relative;
         justify-content: space-between;
         align-items: center;
         padding-inline: 24px;
+        z-index: 10;
     }
 
     &__back-page-button {
@@ -68,11 +88,83 @@ $colors: (
     }
 }
 
+.pokemon-details-container {
+    padding: 4px;
+    margin-top: -60px;
+}
+
 .pills-container {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 16px;
+    margin-top: 56px;
+    margin-inline: 20px;
+}
+
+.sub-title {
+    margin-top: 16px;
+}
+
+.properties-container {
+    display: flex;
+    margin-top: 16px;
+
+    .property-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: end;
+        width: 103px;
+        height: 48px;
+
+        //styles to first and second child
+        &:nth-child(1),
+        &:nth-child(2) {
+            border-right: 1px solid $light;
+        }
+
+        &__property {
+            display: flex;
+            gap: 8px;
+            height: 100%;
+            align-items: center;
+        }
+    }
+}
+
+.description-container {
+    padding-inline: 20px;
+    padding-top: 16px;
+}
+
+.stats-container {
+    width: 100%;
+    padding: 16px 20px 20px 20px;
+
+    .stat-container {
+        display: flex;
+        column-gap: 8px;
+        align-items: baseline;
+
+        .stat-name {
+            width: 31px;
+            text-align: right;
+            padding-right: 8px;
+            border-inline-end: 1px solid $light;
+        }
+
+        .stat-bar {
+            flex-grow: 1;
+            height: 4px;
+            border-radius: 4px;
+
+            &__fill {
+                height: 4px;
+                border-radius: 4px;
+            }
+        }
+    }
 }
 
 .disabled {
