@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { IPokemon } from "../../../types/types";
 import Text from "../../atoms/text/text";
-import PlaceHolderImage from "../../../assets/placeholder.svg";
+import PlaceHolderImage from "../../../assets/placeholderImage.svg";
 
 import "./pokemonItem.scss";
 

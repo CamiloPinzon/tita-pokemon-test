@@ -11,7 +11,7 @@ import TypePill from "../../atoms/typePill/typeFill";
 import WeightIcon from "../../../assets/weight.svg";
 import HeightIcon from "../../../assets/height.svg";
 import Pokeball from "../../../assets/pokeball.svg";
-import PlaceholderImage from "../../../assets/placeholder.svg";
+import PlaceholderImage from "../../../assets/placeholderImage.svg";
 
 import "./PokemonDetail.scss";
 
