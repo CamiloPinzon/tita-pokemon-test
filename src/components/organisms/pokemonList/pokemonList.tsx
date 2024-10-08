@@ -17,8 +17,10 @@ const PokemonList = ({ searchTerm, sortBy }: IPokemonListProps) => {
 	);
 
 	useEffect(() => {
-		dispatch(fetchPokemonsThunk());
-	}, [dispatch]);
+		if (pokemons.length === 0) {
+			dispatch(fetchPokemonsThunk());
+		}
+	}, [dispatch, pokemons.length]);
 
 	if (loading) return <div>Loading...</div>;
 	if (error) return <div>Error: {error}</div>;

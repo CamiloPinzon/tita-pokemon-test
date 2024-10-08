@@ -13,7 +13,7 @@ export const fetchPokemonsThunk = createAsyncThunk(
 	"pokemon/fetchAllPokemons",
 	async () => {
 		const pokemons = await fetchAllPokemons();
-		return pokemons;
+		return pokemons; // Return all pokemons with details
 	}
 );
 
@@ -43,7 +43,7 @@ export const pokemonSlice = createSlice({
 			})
 			.addCase(fetchPokemonsThunk.fulfilled, (state, action) => {
 				state.loading = false;
-				state.pokemons = action.payload;
+				state.pokemons = action.payload; // Store all fetched Pokémon data
 			})
 			.addCase(fetchPokemonsThunk.rejected, (state, action) => {
 				state.loading = false;

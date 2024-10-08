@@ -50,6 +50,9 @@ export interface IPokemon {
 		move: IPokemonMove;
 		stats: IPokemonStat[];
 	}[];
+	description: string;
+	imageUrl: string;
+	largeImageUrl: string;
 }
 
 export interface IGraphQLResponse {

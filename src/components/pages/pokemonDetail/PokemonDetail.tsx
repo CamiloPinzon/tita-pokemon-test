@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
@@ -6,8 +5,6 @@ import { IPokemon } from "../../../types/types";
 import Text from "../../atoms/text/text";
 import ArrowBack from "../../../assets/arrow_back.svg";
 import Chevron from "../../../assets/chevron.svg";
-import { fetchPokemonLargeImage } from "../../../store/pokemonSlice";
-import { fetchPokemonDescription } from "../../../store/pokemonSlice";
 import WhiteCardContainer from "../../atoms/whiteCardContainer/whiteCardContainer";
 import TypePill from "../../atoms/typePill/typeFill";
 import WeightIcon from "../../../assets/weight.svg";
@@ -17,8 +14,6 @@ import Pokeball from "../../../assets/pokeball.svg";
 import "./PokemonDetail.scss";
 
 const PokemonDetail = () => {
-	const [imageUrl, setImageUrl] = useState("");
-	const [description, setDescription] = useState("");
 	const { id } = useParams();
 	const navigate = useNavigate();
 	const { pokemons } = useSelector((state: RootState) => state.pokemon);
@@ -32,36 +27,6 @@ const PokemonDetail = () => {
 
 	console.log(pokemon);
 	const color = pokemon!.types[0].name;
-
-	useEffect(() => {
-		const getImage = async () => {
-			if (pokemonId !== undefined) {
-				try {
-					const image = await fetchPokemonLargeImage(pokemonId);
-					setImageUrl(image);
-				} catch (error) {
-					console.error("Error fetching image:", error);
-				}
-			}
-		};
-
-		getImage();
-	}, [pokemonId]);
-
-	useEffect(() => {
-		const getDescription = async () => {
-			if (pokemonId !== undefined) {
-				try {
-					const description = await fetchPokemonDescription(pokemonId);
-					setDescription(description);
-				} catch (error) {
-					console.error("Error fetching description:", error);
-				}
-			}
-		};
-
-		getDescription();
-	}, [pokemonId]);
 
 	const handleNext = () => {
 		const nextPokemon = pokemons.find(
@@ -110,7 +75,12 @@ const PokemonDetail = () => {
 				>
 					<img src={Chevron} alt="Chevron" />
 				</div>
-				<img src={imageUrl} alt={pokemon.name} width="200px" height="200px" />
+				<img
+					src={pokemon.largeImageUrl}
+					alt={pokemon.name}
+					width="200px"
+					height="200px"
+				/>
 				<div
 					onClick={handleNext}
 					className={`pokemon-detail__next-button ${
@@ -180,7 +150,7 @@ const PokemonDetail = () => {
 						</div>
 					</div>
 					<div className="description-container">
-						<Text text={description} type="body3" color="darkcolor" />
+						<Text text={pokemon.description} type="body3" color="darkcolor" />
 					</div>
 					<div className="sub-title">
 						<Text text="Base Stats" type="subtitle1" color={`${color}`} />
