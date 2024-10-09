@@ -114,6 +114,7 @@ export interface ISortProps {
 
 export interface ISortButtonProps {
 	onClick: () => void;
+	selectedSort: string;
 }
 
 export interface ITypePillProps {
