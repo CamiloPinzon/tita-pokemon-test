@@ -17,7 +17,9 @@ const PokemonItem = ({ pokemon }: PokemonItemProps) => {
 	const formattedId = String(pokemon.id).padStart(3, "0");
 
 	useEffect(() => {
-		setImageUrl(pokemon.largeImageUrl);
+		console.log('image');
+		
+		setImageUrl(pokemon.imageUrl);
 	}, [pokemon]);
 
 	const handleClick = () => {
