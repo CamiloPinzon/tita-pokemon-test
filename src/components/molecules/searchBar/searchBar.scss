@@ -6,7 +6,16 @@
         position: absolute;
         width: 20px;
         height: 20px;
-        top: 6px;
+        top: 9px;
         left: 12px;
+    }
+
+    &__close-logo {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 9px;
+        right: -6px;
+        cursor: pointer;
     }
 }
